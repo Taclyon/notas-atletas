@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.resultado-item {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex; /* Permite organizar imagem e conteúdo lado a lado */
+    align-items: flex-start; /* Alinha itens ao topo */
+}
+
+.resultado-imagem {
+    margin-left: 3%;
+    width: 100px; /* Define a largura da imagem */
+    height: 100px; /* Define a altura da imagem */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    margin-right: 15px; /* Espaço entre a imagem e o texto */
+    border-radius: 4px;
+}
+
+.resultado-conteudo {
+    margin-left: 8%; /* Espaço entre a imagem e o texto */
+    flex: 1; /* Ocupa o espaço restante */
+}
+
+.resultado-conteudo h2 {
+    margin-top: 0;
+    color: #007bff; /* Cor do título */
+}
+
+.resultado-extra {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
