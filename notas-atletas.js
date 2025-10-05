@@ -3,17 +3,21 @@ class Atleta {
     this.atletas = atletas; //instancia a matriz na propriedade atletas do objeto.
   }
   ordenaNotas() {
-    let notasOrdenadas = [];
-    for (let i = 0; i < this.atletas.length; i++) {
-      notasOrdenadas.push(
-        this.atletas[i].notas.sort((a, b) => a - b)
-      );
-    }
+    // let notasOrdenadas = [];
+    // for (let i = 0; i < copiaAtletas.length; i++) {
+    //   notasOrdenadas.push(
+    //     this.atletas[i].notas.sort((a, b) => a - b)
+    //   );
+    // }
+    // return notasOrdenadas;
+    let notasOrdenadas = this.atletas.map(e => {
+        return e.notas.sort((a, b) => a - b);
+    });
     return notasOrdenadas;
   }
   eliminarMaiorEMenorNota() {
     let notasAjustadas = this.ordenaNotas().map(notas => {
-      return notas.slice(1, -1); // Remove a primeira e a última nota
+      return notas.slice(1, -1);  //Remove a primeira e a última nota
     });
 
     return notasAjustadas;
@@ -34,12 +38,31 @@ class Atleta {
     return resultados;
   }
 
-  imprimeResultado() {
-    const medias = this.Soma_Media();
-    let imprime = this.atletas.map((atleta, index) => {
-      return console.log(`>nome: ${atleta.nome} \n>notas: ${atleta.notas.toString()} \n>media: ${medias[index].media}`)
-    });
-  }
+    imprimeResultado() {
+        
+        //imagem do atleta
+        const imagem = "https://imgix.bustle.com/2016/8/5/453179574.jpg?w=1200&h=1200&fit=crop&crop=faces&fm=jpg";
+        const hora = new Date();
+        //percorrer a matriz de atletas
+        this.atletas.map((atleta, index) => {
+            const medias = this.somaMedia();
+            const impressao = document.getElementById("geral");
+            //imprimir no HTML
+ 
+             impressao.innerHTML += `
+                <div class="resultado-item">
+                    <img src=${imagem} class='resultado-imagem' alt='atleta'>
+                    <div class="resultado-conteudo">
+                        <h2>Atleta</h2>
+                        <p> <strong>Nome:</strong> ${atleta.nome} <br> <strong>Notas:</strong> ${atleta.notas.sort((a,b)=>b-a)}<br> <strong>Media:</strong> ${medias[index].media}</p>
+                        <p class="resultado-extra">Data: ${hora.toLocaleDateString('es-ES')}</p>
+                    </div>
+                </div>
+            `; 
+              //mostrar na consola
+            return console.log(`>nome: ${atleta.nome} \n>notas: ${atleta.notas.sort((a,b)=>b-a)} \n>media: ${medias[index].media}`)
+        });
+    }
 }
 
 let atletas = [
